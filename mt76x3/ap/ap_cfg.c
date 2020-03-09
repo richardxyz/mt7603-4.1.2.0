@@ -2328,7 +2328,7 @@ INT RTMPAPSetInformation(
 					if (wdev == NULL) {
 						Status = -EINVAL;
 						break;
-					}
+					}else //FIXME
 					{
 						ap_send_broadcast_deauth(pAd, wdev);
 						if ((&wdev->AuthMode) && (&wdev->WpaMixPairCipher))
@@ -2348,10 +2348,12 @@ INT RTMPAPSetInformation(
 							pObj->ioctl_if,
 							pMbss->SsidLen, pMbss->Ssid));
 					}
-				} else
-					Status = -EINVAL;
+				} else 
+						Status = -EINVAL;
 					break;
+#ifdef APCLI_SUPPORT		//FIXME			
 				}
+#endif			
 			} else
 				Status = -EINVAL;
 			break;
@@ -2370,6 +2372,7 @@ INT RTMPAPSetInformation(
 
 				DBGPRINT(RT_DEBUG_TRACE, ("%s: PSK = %s\n",
 					__func__, PSK));
+#ifdef APCLI_SUPPORT
 				if (pObj->ioctl_if_type == INT_APCLI) {
 					copy_from_user(pAd->ApCfg.ApCliTab[pObj->ioctl_if].PSK, wrq->u.data.pointer, wrq->u.data.length);
 					pAd->ApCfg.ApCliTab[pObj->ioctl_if].PSK[wrq->u.data.length] = '\0';
@@ -2379,6 +2382,7 @@ INT RTMPAPSetInformation(
 					pAd->ApCfg.MBSSID[pObj->ioctl_if].WPAKeyString[wrq->u.data.length] = '\0';
 					ap_security_init(pAd, &pAd->ApCfg.MBSSID[pObj->ioctl_if].wdev, pObj->ioctl_if);
 				}
+#endif /* APCLI_SUPPORT */
 #ifdef CONFIG_AP_SUPPORT
 #ifdef WSC_AP_SUPPORT
 				IF_DEV_CONFIG_OPMODE_ON_AP(pAd) {

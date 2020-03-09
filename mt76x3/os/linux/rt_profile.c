@@ -1240,13 +1240,13 @@ void announce_802_3_packet(
 			unsigned int flags;
 			
 			RtmpOsPktProtocolAssign(pRxPkt);
-
-			RTMP_IRQ_LOCK(&pAd->page_lock, flags);
+			//FIXME
+			//RTMP_IRQ_LOCK(&pAd->page_lock, flags);
 			if(ra_sw_nat_hook_rx(pRxPkt)) 
 			{
 				RtmpOsPktRcvHandle(pRxPkt);
 			}
-			RTMP_IRQ_UNLOCK(&pAd->page_lock, flags);
+			//RTMP_IRQ_UNLOCK(&pAd->page_lock, flags);
 			return;
 		}
 #else
