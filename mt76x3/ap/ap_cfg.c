@@ -2328,7 +2328,7 @@ INT RTMPAPSetInformation(
 					if (wdev == NULL) {
 						Status = -EINVAL;
 						break;
-					}else //FIXME
+					}
 					{
 						ap_send_broadcast_deauth(pAd, wdev);
 						if ((&wdev->AuthMode) && (&wdev->WpaMixPairCipher))
@@ -11912,7 +11912,6 @@ INT Set_ApCli_AutoConnect_Proc(
 	return TRUE;
 }
 #endif  /* APCLI_AUTO_CONNECT_SUPPORT */
-
 #endif /* MAC_REPEATER_SUPPORT */
 
 #ifdef WSC_AP_SUPPORT

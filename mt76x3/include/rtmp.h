@@ -6809,8 +6809,9 @@ INT wdev_init(RTMP_ADAPTER *pAd, struct wifi_dev *wdev, UINT wdev_type);
 INT wdev_tx_pkts(NDIS_HANDLE dev_hnd, PPNDIS_PACKET pkt_list, UINT pkt_cnt, struct wifi_dev *wdev);
 struct wifi_dev *WdevSearchByAddress(RTMP_ADAPTER *pAd, UCHAR *Address);
 struct wifi_dev *wdev_search_by_address(RTMP_ADAPTER *pAd, UCHAR *Address);
-struct REPEATER_CLIENT_ENTRY *lookup_rept_entry(RTMP_ADAPTER *pAd, PUCHAR address);
-
+#ifdef MAC_REPEATER_SUPPORT
+REPEATER_CLIENT_ENTRY *lookup_rept_entry(RTMP_ADAPTER *pAd, PUCHAR address);
+#endif 
 
 VOID rtmp_ps_init(RTMP_ADAPTER *pAd);
 INT rtmp_psDeq_report(RTMP_ADAPTER *pAd,struct dequeue_info *info);

@@ -542,8 +542,24 @@ endif
 
 endif
 
+config CONFIG_MT7603E_APCLI_SUPPORT
+        bool "APCLI SUPPORT"
+        default y
+
+config CONFIG_MT7603E_SNIFFER_SUPPORT
+        bool "SNIFFER SUPPORT"
+        default y
+
+config CONFIG_MT7603E_LED_CONTROL_SUPPORT
+        bool "LED_CONTROL_SUPPORT"
+        default y
+        
+config CONFIG_MT7603E_MAC_REPEATER_SUPPORT
+        bool "MAC REPEATER SUPPORT"
+        default y
+
 config MT76X3_AP_DEBUG
 	bool "Include Debug messages"
-	default n
+	default n 
 	
 #endif FIRST_IF_MT7603E || SECOND_IF_MT7603E
